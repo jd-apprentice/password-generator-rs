@@ -20,6 +20,20 @@ A secure and customizable command-line interface (CLI) tool built with Rust for 
 
 ### Installation
 
+Download the binary from the [Releases](https://github.com/jd-apprentice/password-generator-rs/releases)
+
+Make it executable with
+
+```shell
+chmod +x $HOME/Downloads/password-generator-x86_64
+```
+
+Move it and rename it with the name you want
+
+```shell
+sudo mv $HOME/Downloads/password-generator-x86_64 /usr/local/bin/pass-rs
+```
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/jd-apprentice/password-generator-rs.git
