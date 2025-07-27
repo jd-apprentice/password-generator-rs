@@ -1,4 +1,3 @@
-use rand::seq::SliceRandom;
 use rand::Rng;
 
 const NUMBERS: &[u8] = b"0123456789";
@@ -31,10 +30,10 @@ pub fn generate_password(
         return String::from("Please select at least one character type.");
     }
 
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
     (0..length)
         .map(|_| {
-            let idx = rng.gen_range(0..charset.len());
+            let idx = rng.random_range(0..charset.len());
             charset[idx] as char
         })
         .collect()

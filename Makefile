@@ -1,9 +1,9 @@
 app_name ?= password-generator
 
-all: test lint format build
+all: test lint format build start
 
 start:
-	./target/release/
+	./target/release/$(app_name)
 
 dev:
 	cargo watch -x run
