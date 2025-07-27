@@ -34,6 +34,8 @@ Move it and rename it with the name you want
 sudo mv $HOME/Downloads/password-generator-x86_64 /usr/local/bin/pass-rs
 ```
 
+Compile it yourself if you want
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/jd-apprentice/password-generator-rs.git
