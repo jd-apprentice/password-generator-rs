@@ -81,7 +81,6 @@ fn main() {
                     use_uppercase,
                     use_symbols,
                 );
-                term.clear_screen().unwrap();
                 term.write_line(&format!(
                     "Generated password: {}",
                     style(password.clone()).yellow()
