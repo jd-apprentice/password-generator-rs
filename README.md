@@ -1,6 +1,6 @@
 # 🔐 Password Generator (Rust CLI)
 
-![wallpaper](assets/image.png)
+![wallpaper](./assets/image.png)
 
 A secure and customizable command-line interface (CLI) tool built with Rust for generating strong, random passwords. This project emphasizes security, performance, and ease of use, allowing users to quickly generate passwords with specified criteria and copy them directly to their clipboard.
 
