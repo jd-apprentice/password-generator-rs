@@ -1,9 +1,32 @@
 use arboard::Clipboard;
+use clap::Parser;
 use console::{style, Key, Term};
 use password_generator::generate_password;
 use std::{thread, time::Duration};
 
+mod strength;
+
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    #[arg(short, long, default_value_t = 1)]
+    count: u32,
+
+    #[arg(short, long, default_value = "")]
+    exclude: String,
+}
+
 fn main() {
+    let args = Args::parse();
+
+    if args.count > 1 {
+        for _ in 0..args.count {
+            let password = generate_password(12, true, true, true, true, &args.exclude);
+            println!("{}", password);
+        }
+        return;
+    }
+
     let mut length: u32 = 12;
     let term = Term::stdout();
     let mut clipboard = Clipboard::new().unwrap();
@@ -80,10 +103,13 @@ fn main() {
                     use_lowercase,
                     use_uppercase,
                     use_symbols,
+                    &args.exclude,
                 );
+                let strength = strength::password_strength(&password);
                 term.write_line(&format!(
-                    "Generated password: {}",
-                    style(password.clone()).yellow()
+                    "Generated password: {} (Strength: {})",
+                    style(password.clone()).yellow(),
+                    style(strength).green()
                 ))
                 .unwrap();
 

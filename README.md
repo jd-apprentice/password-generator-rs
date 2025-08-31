@@ -10,6 +10,9 @@ A secure and customizable command-line interface (CLI) tool built with Rust for 
 - **Character Set Options**: Include or exclude numbers, lowercase letters, uppercase letters, and symbols.
 - **Clipboard Integration**: Automatically copies the generated password to your system clipboard for convenience.
 - **Interactive CLI**: User-friendly interface for selecting password criteria.
+- **Batch Generation**: Generate multiple passwords at once.
+- **Exclude Characters**: Specify characters to exclude from the generated password.
+- **Password Strength Indicator**: Shows the strength of the generated password.
 
 ## 🚀 Getting Started
 
@@ -47,9 +50,24 @@ Compile it yourself if you want
    make
    ```
 
+#### Command-line Arguments
+
+You can also use command-line arguments to generate passwords without entering the interactive mode:
+
+- `--count <COUNT>` or `-c <COUNT>`: Generate a specific number of passwords.
+- `--exclude <CHARACTERS>` or `-e <CHARACTERS>`: Exclude a set of characters from the password.
+
+Example:
+
+```bash
+cargo run -- --count 5 --exclude "abc123"
+```
+
+This command will generate 5 passwords, excluding the characters 'a', 'b', 'c', '1', '2', and '3'.
+
 #### Interactive Mode
 
-Once the application starts, you will be presented with an interactive menu:
+If you run the application without any arguments, it will start in interactive mode:
 
 - Use **Up/Down Arrow Keys** to navigate between options.
 - Use **Spacebar** to toggle character set options (Numbers, Lowercase, Uppercase, Symbols).

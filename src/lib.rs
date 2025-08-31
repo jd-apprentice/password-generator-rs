@@ -11,6 +11,7 @@ pub fn generate_password(
     use_lowercase: bool,
     use_uppercase: bool,
     use_symbols: bool,
+    exclude: &str,
 ) -> String {
     let mut charset = Vec::new();
     if use_numbers {
@@ -26,15 +27,20 @@ pub fn generate_password(
         charset.extend_from_slice(SYMBOLS);
     }
 
-    if charset.is_empty() {
+    let final_charset = charset
+        .into_iter()
+        .filter(|&c| !exclude.contains(c as char))
+        .collect::<Vec<u8>>();
+
+    if final_charset.is_empty() {
         return String::from("Please select at least one character type.");
     }
 
     let mut rng = rand::rng();
     (0..length)
         .map(|_| {
-            let idx = rng.random_range(0..charset.len());
-            charset[idx] as char
+            let idx = rng.random_range(0..final_charset.len());
+            final_charset[idx] as char
         })
         .collect()
 }
